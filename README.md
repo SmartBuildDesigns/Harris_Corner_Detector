@@ -36,28 +36,39 @@ El núcleo del detector se basa en evaluar cómo cambia una pequeña ventana (pa
 
 ### Paso 1: Cálculo de Derivadas Espaciales
 Se calcula la derivada de la imagen $I$ en el eje $x$ e $y$ utilizando operadores como Sobel.
+
 $$I_x = \frac{\partial I}{\partial x}$$
+
 $$I_y = \frac{\partial I}{\partial y}$$
 
 ### Paso 2: Productos de las Derivadas
 Calculamos el cuadrado de los gradientes y su producto cruzado para cada píxel:
+
 $$I_{x^2} = I_x \cdot I_x$$
+
 $$I_{y^2} = I_y \cdot I_y$$
+
 $$I_{xy} = I_x \cdot I_y$$
 
 ### Paso 3: Función de Ventana (Suavizado Gaussiano)
 Aplicamos un filtro Gaussiano ($G_\sigma$) a los productos anteriores para integrar la información del vecindario local y reducir el ruido:
+
 $$S_{x^2} = G_\sigma * I_{x^2}$$
+
 $$S_{y^2} = G_\sigma * I_{y^2}$$
+
 $$S_{xy} = G_\sigma * I_{xy}$$
 
 ### Paso 4: Construcción del Tensor de Estructura ($M$)
 Con los valores suavizados, definimos una matriz de covarianza de gradientes de $2 \times 2$ para cada píxel:
+
 $$M = \begin{bmatrix} S_{x^2} & S_{xy} \\ S_{xy} & S_{y^2} \end{bmatrix}$$
 
 ### Paso 5: La Función de Respuesta ($R$)
 Harris y Stephens propusieron una métrica que utiliza el determinante y la traza para estimar la presencia de una esquina sin calcular eigenvalores explícitamente:
+
 $$R = \det(M) - k(\text{trace}(M))^2$$
+
 *(Nota: En nuestra implementación, truncamos los valores negativos de bordes a 0 antes de normalizar la matriz al rango [0, 1] para estabilizar la interfaz gráfica).*
 
 ### Paso 6: Umbralización y Supresión de No Máximos (NMS)
@@ -71,7 +82,11 @@ $$R = \det(M) - k(\text{trace}(M))^2$$
 La herramienta permite explorar la anatomía matemática de cada esquina detectada:
 
 *   **Superficie de Error Cuadrático 3D:**
-    Evalúa la ecuación $E(u,v) \approx \begin{bmatrix} u & v \end{bmatrix} M \begin{bmatrix} u \\ v \end{bmatrix}$. Visualmente, una esquina fuerte genera una superficie cóncava pronunciada en forma de "cuenco".
+    Evalúa la ecuación:
+    
+    $$E(u,v) \approx \begin{bmatrix} u & v \end{bmatrix} M \begin{bmatrix} u \\ v \end{bmatrix}$$
+    
+    Visualmente, una esquina fuerte genera una superficie cóncava pronunciada en forma de "cuenco".
 *   **Elipse de Tensor 2D y Eigenvectores:**
     El tensor de estructura se proyecta geométricamente como una elipse descrita por $x^T M x = \text{constante}$. La orientación está dictada por los eigenvectores, y la magnitud de los ejes es proporcional a $1/\sqrt{\lambda}$.
 
