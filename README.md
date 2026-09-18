@@ -83,9 +83,7 @@ La herramienta permite explorar la anatomía matemática de cada esquina detecta
 
 *   **Superficie de Error Cuadrático 3D:**
     Evalúa la ecuación:
-    
     $$E(u,v) \approx \begin{bmatrix} u & v \end{bmatrix} M \begin{bmatrix} u \\ v \end{bmatrix}$$
-    
     Visualmente, una esquina fuerte genera una superficie cóncava pronunciada en forma de "cuenco".
 *   **Elipse de Tensor 2D y Eigenvectores:**
     El tensor de estructura se proyecta geométricamente como una elipse descrita por $x^T M x = \text{constante}$. La orientación está dictada por los eigenvectores, y la magnitud de los ejes es proporcional a $1/\sqrt{\lambda}$.
