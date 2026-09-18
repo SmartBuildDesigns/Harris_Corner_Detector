@@ -88,9 +88,9 @@ Para ejecutar el código, asegúrate de tener Python instalado y las siguientes 
    ```bash
    python H_corner.py
 
-## 6. Material de consulta
-En este repositorio también se encuentran los documentos originales utilizados como referencia para esta implementación:
+## 6. Material de Consulta
 
-6.2_Harris_Corner_Detector_2.pdf: Presentación académica detallando la deducción matemática y la aproximación bilineal de la superficie de error.
+En este repositorio también se encuentran los documentos originales en formato PDF para profundizar en la teoría y matemáticas detrás del código:
 
-Harris_Stephens_1988.pdf: Artículo original A Combined Corner and Edge Detector (Harris, C. & Stephens, M., 1988).
+*   [**`6.2_Harris_Corner_Detector.pdf`**](6.2_Harris_Corner_Detector.pdf): Presentación académica detallando la deducción matemática y la aproximación bilineal de la superficie de error.
+*   [**`Harris_Stephens_1988.pdf`**](Harris_Stephens_1988.pdf): Artículo original *A Combined Corner and Edge Detector* (Harris, C. & Stephens, M., 1988).
