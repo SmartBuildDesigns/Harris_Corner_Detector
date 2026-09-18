@@ -86,7 +86,7 @@ Para ejecutar el código, asegúrate de tener Python instalado y las siguientes 
    pip install numpy opencv-python matplotlib
 2. **Ejecución:**
    ```bash
-   python H_corner_2.py
+   python H_corner.py
 
 ## 6. Material de consulta
 En este repositorio también se encuentran los documentos originales utilizados como referencia para esta implementación:
