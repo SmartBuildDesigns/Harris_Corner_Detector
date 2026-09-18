@@ -90,6 +90,7 @@ La herramienta permite explorar la anatomía matemática de cada esquina detecta
    M
    \begin{bmatrix} u \\ v \end{bmatrix}
    $$ 
+   
    Visualmente, una esquina fuerte genera una superficie cóncava pronunciada en forma de "cuenco".
    
 *   **Elipse de Tensor 2D y Eigenvectores:**
